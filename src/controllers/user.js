@@ -16,6 +16,10 @@ function register(req, res){
     user.email = params.email;
     user.role = params.role;
     user.image = 'null';
+	const foundUser = User.findOne({email: user.email});
+	if(foundUser){
+		return res.status(403).send({message: "Ya existe usuario registrado con ese email"});
+	}
 	if(params.password){
 		// Encriptar contraseña
 		console.log("vamos a encriptar...");
