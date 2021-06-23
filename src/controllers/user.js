@@ -5,7 +5,7 @@ var User = require('../models/user');
 var jwt = require('../services/jwt');
 var dotenv = require('dotenv');
 
-function saveUser(req, res){
+function register(req, res){
     var user = new User();
     var params = req.body;
 
@@ -14,7 +14,7 @@ function saveUser(req, res){
     user.name = params.name;
     user.surname = params.surname;
     user.email = params.email;
-    user.role = 'ROLE_ADMIN';
+    user.role = params.role;
     user.image = 'null';
 	if(params.password){
 		// Encriptar contraseña
@@ -24,7 +24,7 @@ function saveUser(req, res){
 			console.log(hash)
 			user.password = hash;
 
-			if(user.name != null && user.surname != null && user.email != null){
+			if(user.name != null && user.surname != null && user.email != null && user.role){
 				// Guardar el usuario
 				user.save((err, userStored) => {
 					if(err){
@@ -148,7 +148,7 @@ function getImageFile(req, res){
 
 
 module.exports = {
-	saveUser,
+	register,
 	loginUser,
 	updateUser,
 	uploadImage,
