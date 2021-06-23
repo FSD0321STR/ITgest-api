@@ -1,6 +1,7 @@
 const express = require('express');
 require('express-async-errors');
 const cors = require('cors');
+//const connect = require('./models/mongoose');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -8,7 +9,7 @@ const port = process.env.PORT || 8000;
 
 // const ProductRouter = require('./controllers/ProductRouter');
 
-const AuthRouter = require('./controllers/AuthRouter');
+//const AuthRouter = require('./controllers/AuthRouter');
 
 app.use(
     cors({
