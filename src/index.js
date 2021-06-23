@@ -2,7 +2,7 @@ var mongoose = require ('mongoose');
 var app = require('./app');
 var port = process.env.PORT || 8000;
 console.log("comienza la app");
-//mongodb+srv://admin:mongoadmin@itgestcluster.1piwo.mongodb.net/ITgest?retryWrites=true&w=majority
+
 mongoose.connect(`mongodb+srv://admin:mongoadmin@itgestcluster.1piwo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, res) => {
     if(err) {
         console.error(err);
