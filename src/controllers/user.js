@@ -5,6 +5,52 @@ var User = require('../models/user');
 var jwt = require('../services/jwt');
 var dotenv = require('dotenv');
 
+function register(req, res){
+    var user = new User();
+    var params = req.body;
+
+   // console.log(params);
+
+    user.name = params.name;
+    user.surname = params.surname;
+    user.email = params.email;
+    user.role = params.role;
+    user.image = 'null';
+	const foundUser = User.findOne({email: user.email});
+	if(foundUser){
+		return res.status(403).send({message: "Ya existe usuario registrado con ese email"});
+	}
+	if(params.password){
+		// Encriptar contraseña
+		console.log("vamos a encriptar...");
+		//bcrypt.hash(params.password, null, null, function(err, hash){
+		bcrypt.hash(params.password, parseInt(process.env.SALT_ROUNDS), function(err, hash){
+			console.log(hash)
+			user.password = hash;
+
+			if(user.name != null && user.surname != null && user.email != null && user.role){
+				// Guardar el usuario
+				user.save((err, userStored) => {
+					if(err){
+						res.status(500).send({message: 'Error al guardar el usuario'});
+					}else{
+						if(!userStored){
+							res.status(404).send({message: 'No se ha registrado el usuario'});
+						}else{
+							res.status(200).send({user: userStored});
+						}
+					}
+				});
+
+			}else{
+			    res.status(200).send({message: 'Rellena todos los campos'});
+			}
+		});
+	}else{
+		res.status(200).send({message: 'Introduce la contraseña'});
+	}
+
+}
 
 function loginUser(req, res){
 	var params = req.body;
@@ -106,6 +152,7 @@ function getImageFile(req, res){
 
 
 module.exports = {
+	register,
 	loginUser,
 	updateUser,
 	uploadImage,
