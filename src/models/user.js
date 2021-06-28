@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const { encryptPassword } = require('../helpers/password');
 const Schema = mongoose.Schema;
+
 
 const UserSchema = Schema({
 		name: String,
@@ -9,5 +11,13 @@ const UserSchema = Schema({
 		role: String,
 		image: String
 });
+UserSchema.pre("save",async function(next){
+	const user = this;
+	if(user.isModified("password")){
+		user.password = await encryptPassword(user.password);
+	}
+	next();
+});
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+module.exports = { User }
