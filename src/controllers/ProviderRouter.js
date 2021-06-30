@@ -14,7 +14,7 @@ router.get("", async (req, res) => {
 
 router.post("", async (req, res) => {
     const body  = req.body;
-    const provider = await ProviderServices.createProvider(body);
+    const provider = await ProviderServices.createProvider(body.data);
     return res.status(201).json(provider)
 });
 

@@ -5,10 +5,9 @@ const autoIncrement = require('mongoose-auto-increment');
 
 autoIncrement.initialize(mongoose);
 
-const createProvider = async (document) => {
-    const provider = await createProviderSchema.plugin(autoIncrement.plugin, 'Provider');
+const createProvider = async (data) => {
+    const provider =  await new Provider(data).save();
     return provider;
-
 };
 
 const readProvider = async (id) => {
