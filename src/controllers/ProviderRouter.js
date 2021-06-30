@@ -1,6 +1,5 @@
 const { Router } = require('express');
-const { validateTask } = require('../models/mongoose');
-const ProiderServices = require('../services/ProviderServices')
+const ProviderServices = require('../services/ProviderServices')
 // const protect = require('../middlewares/protect');
 
 const router = Router();
@@ -12,14 +11,10 @@ router.get("", async (req, res) => {
     return res.status(200).json(provider);
 });
 
-router.get("/:id", async (req, res) => {
-    const provider = await ProviderServices.read(req.params.id);
-    return res.status(200).json(provider);
-});
 
 router.post("", async (req, res) => {
     const body  = req.body;
-    const provider = await ProviderServices.create(body);
+    const provider = await ProviderServices.createProvider(body);
     return res.status(201).json(provider)
 });
 

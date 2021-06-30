@@ -1,5 +1,7 @@
 const { Provider, createProviderSchema } = require('../models/provider');
-const mongoose = require(mongoose);
+const mongoose = require('mongoose');
+const { request } = require('../app');
+const autoIncrement = require('mongoose-auto-increment');
 
 autoIncrement.initialize(mongoose);
 
