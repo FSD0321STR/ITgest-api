@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const ProviderSchema =  mongoose.Schema({
     name: String,
+    orders: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Orders'
+    }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
