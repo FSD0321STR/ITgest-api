@@ -26,8 +26,11 @@ if(!user){
 	return res.status(403).json({message: 'invalid credentials'});
 }
 const token = await createToken({id: user._id});
+console.log("logueando");
 return res.status(200).json({ user, token });
 }
+
+
 
 module.exports = {
 	register,

@@ -15,7 +15,7 @@ const login = async ({ email, password }) => {
     hash: user.password,
   });
   if (equalPasswords) {
-    return user;
+    return null;
   }
   return false;
 };

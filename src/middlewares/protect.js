@@ -1,4 +1,4 @@
-const UserService = require('../services/UserService');
+const UserService = require('../services/UserServices');
 const { verifyToken } = require('../helpers/token');
 
 const protect = async (req, res, next) => {
