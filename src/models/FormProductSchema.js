@@ -4,7 +4,7 @@ const CreateFormProductSchema = mongoose.Schema({
 		category: String,
         model: String,
         brand: String,
-        provedor: String,
+        supplier: String,
         price: Number,
         stock: Number,
 

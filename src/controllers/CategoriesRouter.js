@@ -14,6 +14,8 @@ router.post("", async (req, res) => {
     return res.status(201).json(categories)
 });
 
+
+
 router.get("", async (req, res) => {
     const categories = await CategoriesServices.getAll();
     return res.status(200).json(categories);
