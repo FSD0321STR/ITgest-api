@@ -2,7 +2,7 @@ const { Order } = require('../models/Order');
 const { Provider } = require('../models/provider');
 
 const createOrder = async (order) => {
-    const order =  await new Order(order).save();
+    const newOrder =  await new Order(order).save();
     await Provider.findByIdAndUpdate(order.provider, { $push: { orders: order.id } });
     return order;
 };
