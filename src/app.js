@@ -18,9 +18,8 @@ app.use(bodyParser.json()); //convierte a objeto JSON los datos que vienen por h
 app.use('/api', user_routes);
 
 
-
-app.get('/prueba', function (req, res){
-    res.status(200).send({message: 'Bienvenido al backend de ITgest'});
-});
+// app.get('/prueba', function (req, res){
+//     res.status(200).send({message: 'Bienvenido al backend de ITgest'});
+// });
 
 module.exports = app;

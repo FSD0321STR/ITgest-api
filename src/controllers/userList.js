@@ -4,6 +4,7 @@ const UserService = require('../services/userServices');
 const validate = require("../middlewares/validate")
 const protect = require('../middlewares/protect');
 
+
 const router = Router();
 
 router.use(protect);
@@ -43,11 +44,6 @@ router.delete("/:id", async (req, res) => {
     const deleted = await UserService.remove(id);
     return res.status(200).json(deleted)
 });
-
-router.post('/clear', async (req, res) => {
-    const deleted = await UserService.clearCompleted();
-    return res.status(200).json(deleted)
-})
 
 
 module.exports = router;

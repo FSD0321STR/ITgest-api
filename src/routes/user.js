@@ -1,6 +1,6 @@
 const express = require('express');
 const UserController = require('../controllers/user');
-const UserList = require('../controllers/userList');
+const UserListController = require('../controllers/userList');
 
 const api = express.Router();
 //const md_auth = require('../middlewares/authenticated');
@@ -12,7 +12,7 @@ const multipart = require('connect-multiparty');
 
 api.post('/register', UserController.register);
 api.post('/login', UserController.login);
-api.get('/Users', UserList.get);
+api.get('/users', UserListController.get);
 //api.post('update_user/:id', UserController.update);
 // api.put('/update-user/:id', md_auth.ensureAuth, UserController.updateUser);
 // api.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload], UserController.uploadImage);
