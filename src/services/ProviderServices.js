@@ -1,9 +1,5 @@
 const { Provider, createProviderSchema } = require('../models/provider');
 const mongoose = require('mongoose');
-const { request } = require('../app');
-const autoIncrement = require('mongoose-auto-increment');
-
-autoIncrement.initialize(mongoose);
 
 const createProvider = async (data) => {
     const provider =  await new Provider(data).save();

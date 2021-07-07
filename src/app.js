@@ -6,6 +6,7 @@ const app = express();
 //cargamos rutas:
 const user_routes = require('./routes/user');
 const ProviderRouter = require('./controllers/ProviderRouter');
+const UserRouter = require('./controllers/UserRouter');
 
 app.use(cors({ origin: '*',optionsSuccessStatus: 200 }))
 app.use(bodyParser.urlencoded({extended:false}));
@@ -15,6 +16,7 @@ app.use(bodyParser.json()); //convierte a objeto JSON los datos que vienen por h
 //Rutas base:
 app.use('/api', user_routes);
 app.use('/provider', ProviderRouter);
+app.use('/users' , UserRouter);
 
 
 app.get('/prueba', function (req, res){
