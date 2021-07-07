@@ -30,6 +30,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.12.13",
     "mongoose-pagination": "^1.0.0",
+    "react-router-dom": "^5.2.0",
     "util": "^0.12.4"
   },
   "devDependencies": {
