@@ -10,7 +10,7 @@ const router = Router();
 router.use(protect);
 
 router.get("", async (req, res) => {
-    const users = await UserService.readAll();
+    const users = await UserService.users();
     return res.status(200).json(users);
 });
 
