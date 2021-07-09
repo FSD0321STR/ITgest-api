@@ -1,16 +1,22 @@
-var mongoose = require ('mongoose');
-var app = require('./app');
-var port = process.env.PORT || 8000;
-console.log("comienza la app");
+const express = require('express');
+require('express-async-errors');
+const cors = require('cors');
+
+const app = express();
+const port = 8000;
+
+const AuthRouter = require('./controllers/AuthRouter');
+const UserRouter = require('./controllers/UserRouter');
 
 
-mongoose.connect(`mongodb+srv://admin:mongoadmin@itgestcluster.1piwo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, res) => {
-    if(err) {
-        console.error(err);
-    }else{
-        console.log("Se ha conectado a la base de datos correctamente con mongoose");
-        app.listen(port, function(){
-            console.log("Servidor api rest de TasksApp-Vr escuchando en http://localhost:"+port);
-        });
-    }
-});
+app.use(cors({
+    origin: '*',
+    optionsSuccessStatus: 200,
+}));
+
+app.use(express.json());
+app.use(AuthRouter);
+app.use('/user', UserRouter);
+
+
+app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
