@@ -1,9 +1,9 @@
-var fs = require('fs');
+// var fs = require('fs');
 var path = require('path');
 var bcrypt = require('bcrypt');
 const AuthServices = require('../services/AuthServices');
-var jwt = require('../services/jwt');
-var dotenv = require('dotenv');
+// var jwt = require('../services/jwt');
+// var dotenv = require('dotenv');
 const { createToken } = require('../helpers/token');
 
 async function register(req, res, next){
