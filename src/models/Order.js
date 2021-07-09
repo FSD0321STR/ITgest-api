@@ -21,7 +21,7 @@ const OrderSchema =  mongoose.Schema({
     updatedAt: { type: Date, default: Date.now },
 });
 
-const Order = mongoose.model('Orders', OrderSchema);
+const Order = mongoose.model('order', OrderSchema);
 
 
 const OrderCreateSchema = {
