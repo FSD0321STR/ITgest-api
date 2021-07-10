@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
     if (!user) {
         return res.status(403).json({ message: "The email is already in use" });
     }
-    const token = await createToken({ id: user._id }); // generar token;
+    const token = await createToken({ id: user._id });
     return res.status(201).json({ token, user });
 });
 
@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
         return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = await createToken({ id: user._id }); // generar token;
+    const token = await createToken({ id: user._id });
     return res.status(200).json({ token, user });
 });
 
