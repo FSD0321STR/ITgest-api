@@ -7,6 +7,7 @@ const { encryptPassword } = require('../helpers/password');
 
 mongoose.connect(`mongodb+srv://admin:mongoadmin@itgestcluster.1piwo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//SCHEMA ITEM
 const Item = mongoose.model('Item', {
     model: String,
     Brand: String,
@@ -42,14 +43,14 @@ const User = mongoose.model('User', userSchema);
 const itemCreateSchema = {
     type: "object",
     properties: {
-      title: {type: "string"},
+      model: {type: "string"},
       brand: {type: "string"},
       provider: {type: "string"},
-      Category: {type: "string"},
-      Price: {type: "number"},
+      category: {type: "string"},
+      price: {type: "number"},
       minStock: {type: "number"},
     },
-    required: ["title", "brand", "provider", "Price"],
+    required: ["model", "brand", "provider", "Price"],
     additionalProperties: false
 };
 
@@ -57,11 +58,11 @@ const itemCreateSchema = {
 const itemUpdateSchema = {
     type: "object",
     properties: {
-        title: {type: "string"},
+        model: {type: "string"},
         brand: {type: "string"},
         provider: {type: "string"},
-        Category: {type: "string"},
-        Price: {type: "number"},
+        category: {type: "string"},
+        price: {type: "number"},
         minStock: {type: "number"},
       },
     required: [],
@@ -72,11 +73,11 @@ const itemUpdateSchema = {
 const itemPatchSchema = {
     type: "object",
     properties: {
-        title: {type: "string"},
+        model: {type: "string"},
         brand: {type: "string"},
         provider: {type: "string"},
-        Category: {type: "string"},
-        Price: {type: "number"},
+        category: {type: "string"},
+        price: {type: "number"},
         minStock: {type: "number"},
       },
     required: [],
@@ -98,5 +99,6 @@ validateItem = (document, method) => {
 
 module.exports = {
     User,
+    Item,
 }
 
