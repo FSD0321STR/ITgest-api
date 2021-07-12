@@ -10,10 +10,10 @@ mongoose.connect(`mongodb+srv://admin:mongoadmin@itgestcluster.1piwo.mongodb.net
 //SCHEMA ITEM
 const Item = mongoose.model('Item', {
     model: String,
-    Brand: String,
-    Provider: String,
-    Category: String,
-    Price: Number,
+    brand: String,
+    provider: String,
+    category: String,
+    price: Number,
     minStock: Number,
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
@@ -50,7 +50,7 @@ const itemCreateSchema = {
       price: {type: "number"},
       minStock: {type: "number"},
     },
-    required: ["model", "brand", "provider", "Price"],
+    required: ["model", "brand", "provider", "price"],
     additionalProperties: false
 };
 
@@ -100,5 +100,6 @@ validateItem = (document, method) => {
 module.exports = {
     User,
     Item,
+    validateItem,
 }
 

@@ -1,4 +1,4 @@
-const { Router } = require('express')
+const { Router } = require('express');
 const { validateItem } = require('../models/mongoose');
 const ItemService = require('../services/ItemService');
 const validate = require("../middlewares/validate");
@@ -44,10 +44,10 @@ router.delete("/:id", async (req, res) => {
     return res.status(200).json(deleted)
 });
 
-router.post('/clear', async (req, res) => {
-    const deleted = await ItemService.clearCompleted();
-    return res.status(200).json(deleted)
-})
+// router.post('/clear', async (req, res) => {
+//     const deleted = await ItemService.clearCompleted();
+//     return res.status(200).json(deleted)
+// })
 
 
 module.exports = router;
