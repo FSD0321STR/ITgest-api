@@ -14,8 +14,10 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const user = await AuthService.login(req.body);
-    if (!user) {
+    const user = req.body
+    await console.log(user);
+    const logedUser = await AuthService.login(user);
+    if (!logedUser) {
         return res.status(401).json({ message: "Invalid credentials" });
     }
 
