@@ -31,6 +31,10 @@ const findById = (id) => {
     return User.findById(id);
 };
 
+const remove = (id) => {
+    return User.findByIdAndDelete(id).exec();
+};
+
 module.exports = {
     create,
     readAll,
@@ -38,4 +42,5 @@ module.exports = {
     exists,
     findByEmail,
     findById,
+    remove,
 }
