@@ -18,6 +18,8 @@ router.get("/:id", async (req, res) => {
     return res.status(200).json(item);
 });
 
+//aslkdnkasldk
+
 router.post("", validate(validateItem), async (req, res) => {
     const body  = req.body;
     const item = await ItemService.create(body);
