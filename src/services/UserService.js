@@ -42,4 +42,5 @@ module.exports = {
     exists,
     findByEmail,
     findById,
+    remove,
 }
