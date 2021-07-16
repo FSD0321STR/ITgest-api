@@ -7,21 +7,13 @@ const OrderSchema =  mongoose.Schema({
     model: String,
     productId: String,
     provider: String,
-    // productId: {
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref: 'Products'
-    // },
-    // provider: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Provider'
-    // },
     amunt: Number,
     delivered: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
 
-const Order = mongoose.model('order', OrderSchema);
+const Order = mongoose.model('orders', OrderSchema);
 
 
 const OrderCreateSchema = {
